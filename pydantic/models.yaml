@@ -1,0 +1,17 @@
+---
+components:
+  schemas:
+    AnimalDailyObserved:
+      allOf:
+        - $ref: ../models/AnimalObservation.yaml#/AnimalObservation
+    HarvestEvent:
+      allOf:
+        - $ref: ../models/ICASA/HarvestEvent.yaml#/HarvestEvent
+
+info:
+  description: "Model Definitions for INTEGRITY research project"
+  title: INTEGRITY Data Models
+  version: "1.0.0"
+openapi: "3.0.0"
+
+paths: {}

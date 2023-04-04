@@ -1,0 +1,105 @@
+Animal:
+  x-ngsi:
+    uri-prefix: https://integrity.github.io/
+  description: Basic information of single animal
+  properties:
+    legalid:
+      description: Official animal ID e.g. EU animal ID, has to be unique.
+      type: string
+    animalid:
+      description: On-farm ID of the animal, is not globally and always even locally unique.
+      type: number
+    herd:
+      description: Reference to herd.
+      type: string
+      x-ngsi:
+        type: Relationship
+    farm:
+      description: Reference to farm.
+      type: string
+      x-ngsi:
+        type: Relationship
+    species:
+      description: Animal species
+      type: string
+    breed:
+      description: Animal breed as 2 letter code
+      type: string
+    gender:
+      description: Animal gender. `M` for male or `F` for female
+    birthdate:
+      description: Animal birthdate
+    calvingdate:
+      description: Last calving date
+AnimalDaily:
+  x-ngsi:
+    uri-prefix: https://integrity.github.io/
+  description:
+    "Daily (aggregated) observations from one animal"
+  properties:
+    dateObserved:
+      description: Date
+      type: string
+      x-ngsi:
+        type: Property
+        model: http://schema.org/DateTime
+    animal:
+      description: Reference to animal
+      x-ngsi:
+        type: Relationship
+    milkyield:
+      description: Milk yield kg/day.
+      x-ngsi:
+        uri: http://opendata.inra.fr/ATOL/ATOL_0001518
+    bodyweight:
+      description: Animal's live weight
+      unit: KGM
+      x-ngsi:
+        uri: http://opendata.inra.fr/ATOL/ATOL_0000351
+    methaneyield:
+      description: Methane yield/day.
+      unit: GM
+      x-ngsi:
+        uri: http://opendata.inrae.fr/ATOL/page/ATOL_0001601
+    feedintake:
+      description: feed intake
+      unitCode: KGM
+      x-ngsi:
+        uri: http://opendata.inra.fr/ATOL/ATOL_0000772
+    feeds:
+      description: Reference to consumed feeds
+      x-ngsi:
+        type: Relationship
+    MEintake:
+      description: Metabolizable energy intake
+      type: number
+      unit: MJ/day
+      x-ngsi:
+        uri: http://opendata.inra.fr/ATOL/ATOL_0002558
+    MErequirement:
+      description: Metabolizable energy requirement
+      type: number
+      unit: MJ/day
+      x-ngsi:
+        uri: http://opendata.inra.fr/ATOL/ATOL_0001600
+  required:
+    - animal
+# Characteristics from EOL?
+# https://agroportal.lirmm.fr/ontologies/EOL?p=classes&conceptid=http%3A%2F%2Fopendata.inra.fr%2FEOL%2FEOL_0001683
+Feed:
+  description: Livestock feed
+  properties:
+    name:
+      description: Name of the feed
+    relative_composition:
+      description: Diet relative composition
+      x-ngsi:
+        uri: http://opendata.inra.fr/EOL/EOL_0001686
+
+
+
+
+
+
+
+
