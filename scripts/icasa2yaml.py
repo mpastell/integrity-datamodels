@@ -111,7 +111,7 @@ for class_iri in graph.subjects(RDF.type, OWL.Class):
 doc = OrderedDict()
 doc["components"] = {"schemas" : models}
 doc["info"] = {"description": "Model Definitions for INTEGRITY research project",
-                "title": "INTEGRITY Data Models",
+                "title": "ICASE converted data models",
                 "version": "0.0.1"}
 doc["openapi"] = "3.0.0"
 doc["paths"] = {}

@@ -1,0 +1,1056 @@
+---
+components:
+  schemas:
+    Animal:
+      description: Basic information of single animal
+      properties:
+        animalid:
+          description: On-farm ID of the animal, is not globally and always even locally
+            unique.
+          type: number
+        birthdate:
+          description: Animal birthdate
+        breed:
+          description: Animal breed as 2 letter code
+          type: string
+        calvingdate:
+          description: Last calving date
+        farm:
+          description: Reference to farm.
+          type: string
+          x-ngsi:
+            type: Relationship
+        gender:
+          description: Animal gender. `M` for male or `F` for female
+        herd:
+          description: Reference to herd.
+          type: string
+          x-ngsi:
+            type: Relationship
+        legalid:
+          description: Official animal ID e.g. EU animal ID, has to be unique.
+          type: string
+        species:
+          description: Animal species
+          type: string
+      x-ngsi:
+        uri-prefix: https://integrity.github.io/
+    AnimalDailyObs:
+      description: Daily (aggregated) observations from one animal
+      properties:
+        MEintake:
+          description: Metabolizable energy intake
+          type: number
+          unit: MJ/day
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0002558
+        MErequirement:
+          description: Metabolizable energy requirement
+          type: number
+          unit: MJ/day
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0001600
+        animal:
+          description: Reference to animal
+          x-ngsi:
+            type: Relationship
+        bodyweight:
+          description: Animal's live weight
+          unit: KGM
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0000351
+        dateObserved:
+          description: Date
+          type: string
+          x-ngsi:
+            model: http://schema.org/DateTime
+            type: Property
+        feedintake:
+          description: feed intake
+          unitCode: KGM
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0000772
+        feeds:
+          description: Reference to consumed feeds
+          x-ngsi:
+            type: Relationship
+        methaneyield:
+          description: Methane yield/day.
+          unit: GM
+          x-ngsi:
+            uri: http://opendata.inrae.fr/ATOL/page/ATOL_0001601
+        milkyield:
+          description: Milk yield kg/day.
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0001518
+      x-ngsi:
+        uri-prefix: https://integrity.github.io/
+    AnimalDailyPred:
+      description: Daily (aggregated) observations from one animal
+      properties:
+        MEintake:
+          description: Metabolizable energy intake
+          type: number
+          unit: MJ/day
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0002558
+        MErequirement:
+          description: Metabolizable energy requirement
+          type: number
+          unit: MJ/day
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0001600
+        animal:
+          description: Reference to animal
+          x-ngsi:
+            type: Relationship
+        bodyweight:
+          description: Animal's live weight
+          unit: KGM
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0000351
+        dateObserved:
+          description: Date
+          type: string
+          x-ngsi:
+            model: http://schema.org/DateTime
+            type: Property
+        feedintake:
+          description: feed intake
+          unitCode: KGM
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0000772
+        feeds:
+          description: Reference to consumed feeds
+          x-ngsi:
+            type: Relationship
+        methaneyield:
+          description: Methane yield/day.
+          unit: GM
+          x-ngsi:
+            uri: http://opendata.inrae.fr/ATOL/page/ATOL_0001601
+        milkyield:
+          description: Milk yield kg/day.
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0001518
+      x-ngsi:
+        uri-prefix: https://integrity.github.io/
+    Feed:
+      description: Livestock feed
+      properties:
+        name:
+          description: Name of the feed
+        relative_composition:
+          description: Diet relative composition
+          x-ngsi:
+            uri: http://opendata.inra.fr/EOL/EOL_0001686
+    FertilizerApplication:
+      description: Fertilizer application
+      properties:
+        agriparcel:
+          description: Reference to the AgriParcel
+          x-ngsi:
+            type: Relationship
+        application_depth_fert:
+          description: Fertilizer application depth
+          externalDocs:
+            url: http://purl.org/icasa/core#fedep
+        ca_in_applied_fertilizer:
+          description: Ca in applied fertilizer
+          externalDocs:
+            url: http://purl.org/icasa/core#feamc
+        category:
+          description: Constant `ManagementActivity` used for querying all operations
+        dateObserved:
+          description: Date when the operation was executed
+        fertiliz_app_name:
+          description: Name or notes for this fertilizer application
+          externalDocs:
+            url: http://purl.org/icasa/core#fecd_name
+        fertiliz_code_other_elem:
+          description: Fertilizer code for other elements (e.g., Mg for magnesium)
+          externalDocs:
+            url: http://purl.org/icasa/core#feocd
+        fertilization_date:
+          description: Fertilization date
+          externalDocs:
+            url: http://purl.org/icasa/core#fedate
+        fertilizer_applic_day:
+          description: Fertilizer application day
+          externalDocs:
+            url: http://purl.org/icasa/core#feday
+        fertilizer_applic_method:
+          description: Fertilizer application method
+          externalDocs:
+            url: http://purl.org/icasa/core#feacd
+        fertilizer_applic_year:
+          description: Fertilizer application year
+          externalDocs:
+            url: http://purl.org/icasa/core#feyr
+        fertilizer_k_applied:
+          description: Potassium in applied fertilizer
+          externalDocs:
+            url: http://purl.org/icasa/core#feamk
+        fertilizer_level:
+          description: Fertilizer level in treatment structure
+          externalDocs:
+            url: http://purl.org/icasa/core#fe
+        fertilizer_material:
+          description: Fertilizer material
+          externalDocs:
+            url: http://purl.org/icasa/core#fecd
+        n_in_applied_fertilizer:
+          description: Nitrogen in applied fertilizer
+          externalDocs:
+            url: http://purl.org/icasa/core#feamn
+        nh4_applied_fertilizer:
+          description: Ammonium in applied fertilizer
+          externalDocs:
+            url: http://purl.org/icasa/core#fenh4
+        no3_applied_fertilizer:
+          description: Nitrate applied fertilizer
+          externalDocs:
+            url: http://purl.org/icasa/core#feno3
+        other_elements_appl_fert:
+          description: Other elements in applied fertilizer
+          externalDocs:
+            url: http://purl.org/icasa/core#feamo
+        phosphorus_applied_fert:
+          description: Phosphorus in applied fertilizer
+          externalDocs:
+            url: http://purl.org/icasa/core#feamp
+    HarvestEvent:
+      description: Harvest event
+      properties:
+        agriparcel:
+          description: Reference to the AgriParcel
+          x-ngsi:
+            type: Relationship
+        category:
+          description: Constant `ManagementActivity` used for querying all operations
+        dateObserved:
+          description: Date when the operation was executed
+        harv_operat_main_product:
+          description: Harvest operations, percent economic product harvested
+          externalDocs:
+            url: http://purl.org/icasa/core#happc
+        harv_operat_size_categor:
+          description: Harvest operations size category
+          externalDocs:
+            url: http://purl.org/icasa/core#hasiz
+        harv_operation_byproduct:
+          description: Harvest operations, percent of by-product harvested
+          externalDocs:
+            url: http://purl.org/icasa/core#habpc
+        harvest_amount:
+          description: Harvest, total amount removed as mass
+          externalDocs:
+            url: http://purl.org/icasa/core#hamt
+        harvest_area:
+          description: Harvest area
+          externalDocs:
+            url: http://purl.org/icasa/core#harea
+        harvest_crop:
+          description: Harvest operations, crop harvested
+          externalDocs:
+            url: http://purl.org/icasa/core#hacr
+        harvest_cut_height:
+          description: Harvest, height of cut
+          externalDocs:
+            url: http://purl.org/icasa/core#haht
+        harvest_method:
+          description: Harvest method
+          externalDocs:
+            url: http://purl.org/icasa/core#harm
+        harvest_operat_component:
+          description: Harvest operations, crop component harvested
+          externalDocs:
+            url: http://purl.org/icasa/core#hacom
+        harvest_operations_date:
+          description: Harvest operations date, DAP if year = -99
+          externalDocs:
+            url: http://purl.org/icasa/core#hadat
+        harvest_operations_day:
+          description: Harvest operations day, DAP if year = -99
+          externalDocs:
+            url: http://purl.org/icasa/core#haday
+        harvest_operations_level:
+          description: Harvest operations level, links to HARVEST table
+          externalDocs:
+            url: http://purl.org/icasa/core#ha
+        harvest_operations_year:
+          description: Harvest operations year
+          externalDocs:
+            url: http://purl.org/icasa/core#hayr
+        harvest_stage:
+          description: Harvest, growth stage of crop at date
+          externalDocs:
+            url: http://purl.org/icasa/core#hastg
+    IrrigationApplication:
+      description: Irrigation application
+      properties:
+        agriparcel:
+          description: Reference to the AgriParcel
+          x-ngsi:
+            type: Relationship
+        bund_height:
+          description: Bund height (e.g., for flooded rice)
+          externalDocs:
+            url: http://purl.org/icasa/core#abund
+        category:
+          description: Constant `ManagementActivity` used for querying all operations
+        dateObserved:
+          description: Date when the operation was executed
+        irrig_amount_depth:
+          description: Irrigation amount, depth of water
+          externalDocs:
+            url: http://purl.org/icasa/core#irval
+        irrigation_applic_depth:
+          description: Irrigation application depth (e.g., for depth to drip line)
+          externalDocs:
+            url: http://purl.org/icasa/core#iradp
+        irrigation_date:
+          description: Irrigation date
+          externalDocs:
+            url: http://purl.org/icasa/core#idate
+        irrigation_day:
+          description: Irrigation day
+          externalDocs:
+            url: http://purl.org/icasa/core#irday
+        irrigation_h2o_n_conc:
+          description: Irrigation water nitrogen concentration
+          externalDocs:
+            url: http://purl.org/icasa/core#irnpc
+        irrigation_level:
+          description: Irrigation level, links to IRRIGATIONS table
+          externalDocs:
+            url: http://purl.org/icasa/core#ir
+        irrigation_operation:
+          description: "Irrigation operation (e.g., furrow, sprinkler, drip\u2026)"
+          externalDocs:
+            url: http://purl.org/icasa/core#irop
+        irrigation_operation_name:
+          description: Name of irrigation operation or specific notes about this application
+          externalDocs:
+            url: http://purl.org/icasa/core#irop_name
+        irrigation_year:
+          description: Irrigation or water management year
+          externalDocs:
+            url: http://purl.org/icasa/core#iryr
+    OrganicMaterialApplication:
+      description: Organic material application
+      properties:
+        agriparcel:
+          description: Reference to the AgriParcel
+          x-ngsi:
+            type: Relationship
+        category:
+          description: Constant `ManagementActivity` used for querying all operations
+        dateObserved:
+          description: Date when the operation was executed
+        org_material_appl_depth:
+          description: Organic materials application depth
+          externalDocs:
+            url: http://purl.org/icasa/core#omdep
+        org_material_applic_amnt:
+          description: Organic materials application amount, dry weight basis
+          externalDocs:
+            url: http://purl.org/icasa/core#omamt
+        org_material_applic_date:
+          description: Organic materials application date
+          externalDocs:
+            url: http://purl.org/icasa/core#omdat
+        org_material_applic_day:
+          description: Organic materials application day
+          externalDocs:
+            url: http://purl.org/icasa/core#omday
+        org_material_applic_meth:
+          description: Organic materials application method
+          externalDocs:
+            url: http://purl.org/icasa/core#omacd
+        org_material_c_to_n:
+          description: Organic materials C:N ratio
+          externalDocs:
+            url: http://purl.org/icasa/core#omc2n
+        org_material_cover:
+          description: Organic materials, percent ground covered by organic matter
+          externalDocs:
+            url: http://purl.org/icasa/core#omcov
+        org_material_incorp_perc:
+          description: Organic materials application, fraction incorporporated as
+            %
+          externalDocs:
+            url: http://purl.org/icasa/core#ominp
+        org_material_lignin_conc:
+          description: Organic materials lignin concentration
+          externalDocs:
+            url: http://purl.org/icasa/core#omlpc
+        org_materials_applic_lev:
+          description: Organic materials application level, links to OM table
+          externalDocs:
+            url: http://purl.org/icasa/core#om
+        org_materials_applic_yr:
+          description: Organic materials application year
+          externalDocs:
+            url: http://purl.org/icasa/core#omyr
+        org_matter_carbon_conc:
+          description: Organic matter or residue added, carbon concentration
+          externalDocs:
+            url: http://purl.org/icasa/core#omcpc
+        org_matter_moisture_conc:
+          description: Organic matter or residue added, moisture concentration
+          externalDocs:
+            url: http://purl.org/icasa/core#omh2o
+        organic_material:
+          description: Organic material, identifying code
+          externalDocs:
+            url: http://purl.org/icasa/core#omcd
+        organic_material_k_conc:
+          description: Organic materials potasium concentration
+          externalDocs:
+            url: http://purl.org/icasa/core#omkpc
+        organic_material_n_conc:
+          description: Organic materials nitrogen concentration
+          externalDocs:
+            url: http://purl.org/icasa/core#omnpc
+        organic_material_p_conc:
+          description: Organic materials phosphorus concentration
+          externalDocs:
+            url: http://purl.org/icasa/core#omppc
+    Planting:
+      description: Planting date, seed and initial plant populations, seeding depth,
+        and plant distribution (row spacing, etc.)
+      properties:
+        agriparcel:
+          description: Reference to the AgriParcel
+          x-ngsi:
+            type: Relationship
+        category:
+          description: Constant `ManagementActivity` used for querying all operations
+        dateObserved:
+          description: Date when the operation was executed
+        emergence_date:
+          description: Date of emergence
+          externalDocs:
+            url: http://purl.org/icasa/core#edate
+        emergence_day:
+          description: Day of year for date of emergence
+          externalDocs:
+            url: http://purl.org/icasa/core#pldoe
+        emergence_year:
+          description: Year for date of emergence (growth stage)
+          externalDocs:
+            url: http://purl.org/icasa/core#plyre
+        fertile_tiller_num:
+          description: Fertile tiller number (sorghum)
+          externalDocs:
+            url: http://purl.org/icasa/core#plftn
+        genotype:
+          description: Reference to genotype http://purl.org/icasa/core#Genotype
+        germination:
+          description: Planting material germination
+          externalDocs:
+            url: http://purl.org/icasa/core#plgpc
+        length_sprout_material:
+          description: Planting material sprout length
+          externalDocs:
+            url: http://purl.org/icasa/core#plspl
+        nursery_env_pl_material:
+          description: Transplant nursery environment (mean temperature)
+          externalDocs:
+            url: http://purl.org/icasa/core#plenv
+        plant_pop_at_emergence:
+          description: Plant population at emergence
+          externalDocs:
+            url: http://purl.org/icasa/core#plpoe
+        plant_pop_at_planting:
+          description: Plant population at planting
+          externalDocs:
+            url: http://purl.org/icasa/core#plpop
+        planting_date:
+          description: Planting or sowing date
+          externalDocs:
+            url: http://purl.org/icasa/core#pdate
+        planting_day:
+          description: Day of planting
+          externalDocs:
+            url: http://purl.org/icasa/core#plday
+        planting_depth:
+          description: Planting depth
+          externalDocs:
+            url: http://purl.org/icasa/core#pldp
+        planting_distribution:
+          description: Planting distribution
+          externalDocs:
+            url: http://purl.org/icasa/core#plds
+        planting_level:
+          description: Planting, level in treatment structure
+          externalDocs:
+            url: http://purl.org/icasa/core#pl
+        planting_level_name:
+          description: Planting level, name of treatment
+          externalDocs:
+            url: http://purl.org/icasa/core#pl_name
+        planting_material:
+          description: Planting material
+          externalDocs:
+            url: http://purl.org/icasa/core#plma
+        planting_material_age:
+          description: Planting material age (also used for dormancy adjustments)
+          externalDocs:
+            url: http://purl.org/icasa/core#plage
+        planting_material_source:
+          description: Source of the planting material
+          externalDocs:
+            url: http://purl.org/icasa/core#plmsource
+        planting_material_weight:
+          description: Planting material weight
+          externalDocs:
+            url: http://purl.org/icasa/core#plmwt
+        planting_year:
+          description: Planting year
+          externalDocs:
+            url: http://purl.org/icasa/core#plyr
+        plants_per_hill:
+          description: Plants per hill
+          externalDocs:
+            url: http://purl.org/icasa/core#plph
+        row_direction:
+          description: Row direction, degrees from N
+          externalDocs:
+            url: http://purl.org/icasa/core#plrd
+        row_spacing:
+          description: Row spacing
+          externalDocs:
+            url: http://purl.org/icasa/core#plrs
+        seedbed_density:
+          description: Planting density in nursery seed bed
+          externalDocs:
+            url: http://purl.org/icasa/core#nplsb
+        transplant_age:
+          description: Transplant age
+          externalDocs:
+            url: http://purl.org/icasa/core#page
+        transplant_date:
+          description: Transplant date
+          externalDocs:
+            url: http://purl.org/icasa/core#trdate
+    TillageEvent:
+      description: Tillage event
+      properties:
+        agriparcel:
+          description: Reference to the AgriParcel
+          x-ngsi:
+            type: Relationship
+        category:
+          description: Constant `ManagementActivity` used for querying all operations
+        dateObserved:
+          description: Date when the operation was executed
+        till_mix_effectiveness:
+          description: Tillage operations mixing effectiveness
+          externalDocs:
+            url: http://purl.org/icasa/core#timix
+        tillage_date:
+          description: Tillage date
+          externalDocs:
+            url: http://purl.org/icasa/core#tdate
+        tillage_implement:
+          description: Tillage implement
+          externalDocs:
+            url: http://purl.org/icasa/core#tiimp
+        tillage_level:
+          description: Tillage operation level
+          externalDocs:
+            url: http://purl.org/icasa/core#ti
+        tillage_operation_name:
+          description: Tillage operations, name of specific event
+          externalDocs:
+            url: http://purl.org/icasa/core#ti_op_name
+        tillage_operations_day:
+          description: Tillage operations day
+          externalDocs:
+            url: http://purl.org/icasa/core#tiday
+        tillage_operations_depth:
+          description: Tillage operations depth
+          externalDocs:
+            url: http://purl.org/icasa/core#tidep
+        tillage_operations_year:
+          description: Tillage operations year
+          externalDocs:
+            url: http://purl.org/icasa/core#tiyr
+        tillage_order:
+          description: Tillage operations order within a single day
+          externalDocs:
+            url: http://purl.org/icasa/core#tiord
+    Genotype:
+      description: Crop and cultivar identifiers, names, and background
+      properties:
+        crop_ident_icasa:
+          description: Crop (or weed) species identifier
+          externalDocs:
+            url: http://purl.org/icasa/core#crid
+        cultivar_identifier:
+          description: Cultivar, line or genotype identifier
+          externalDocs:
+            url: http://purl.org/icasa/core#cul_id
+        cultivar_name:
+          description: Cultivar name
+          externalDocs:
+            url: http://purl.org/icasa/core#cul_name
+        cultivar_notes:
+          description: Cultivar notes
+          externalDocs:
+            url: http://purl.org/icasa/core#cul_notes
+        genotype_level_number:
+          description: Genotype level, as listed in Treatments table under GE
+          externalDocs:
+            url: http://purl.org/icasa/core#ge
+        id:
+          description: id
+          externalDocs:
+            url: http://purl.org/icasa/core#id
+        relative_maturity:
+          description: Relative maturity
+          externalDocs:
+            url: http://purl.org/icasa/core#rm
+    Soil:
+      description: Set of soil profile data for pedons from one or more sites in a
+        region
+      properties:
+        distrib_restrictions:
+          description: Distribution limitations for the soils data set
+          externalDocs:
+            url: http://purl.org/icasa/core#sl_distrib
+        file_version_sl:
+          description: File version for ICASA standard
+          externalDocs:
+            url: http://purl.org/icasa/core#version_sl
+        revision_date_first_sl:
+          description: Date the file was first created
+          externalDocs:
+            url: http://purl.org/icasa/core#rev_date_first_sl
+        revision_date_latest_sl:
+          description: Date the file was last modified
+          externalDocs:
+            url: http://purl.org/icasa/core#rev_date_latest_sl
+        revision_notes_sl:
+          description: Notes describing reasons for the revision
+          externalDocs:
+            url: http://purl.org/icasa/core#revision_notes_sl
+        soil_citation:
+          description: Full citation for soil data
+          externalDocs:
+            url: http://purl.org/icasa/core#sl_citation
+        soil_license:
+          description: License associated with soil data
+          externalDocs:
+            url: http://purl.org/icasa/core#sl_license
+        soil_notes:
+          description: Notes describing soil dataset
+          externalDocs:
+            url: http://purl.org/icasa/core#sl_notes
+        soil_profile_methods:
+          description: General notes on execution of experiment.
+          externalDocs:
+            url: http://purl.org/icasa/core#methods
+    SoilProfile:
+      description: Background information on a single profileSoil profile data for
+        individual pedons
+      properties:
+        cona:
+          description: 'Apsim Cona soil evaporation '
+          externalDocs:
+            url: http://purl.org/icasa/core#cona
+        depth_of_topsoil:
+          description: Thickness of topsoil
+          externalDocs:
+            url: http://purl.org/icasa/core#sltop
+        diffus_const:
+          description: APSIM Evaporative diffusion constant
+          externalDocs:
+            url: http://purl.org/icasa/core#diffusconst
+        diffus_slope:
+          description: APSIM Evaporative diffusion slope
+          externalDocs:
+            url: http://purl.org/icasa/core#diffusslope
+        drainage_rate_per_day:
+          description: Drainage rate as fraction per day
+          externalDocs:
+            url: http://purl.org/icasa/core#sldr
+        latitude_soil_profile:
+          description: Latitude of soil profile site
+          externalDocs:
+            url: http://purl.org/icasa/core#soil_lat
+        longitude_soil_profile:
+          description: Longitude of soil profile site
+          externalDocs:
+            url: http://purl.org/icasa/core#soil_long
+        mineralization_factor:
+          description: Mineralization factor (0 to 1 scale)
+          externalDocs:
+            url: http://purl.org/icasa/core#slnf
+        name_of_soil_profile:
+          description: Name of soil profile
+          externalDocs:
+            url: http://purl.org/icasa/core#soil_name
+        ph_buffer_determin_meth:
+          description: pH in buffer determination method
+          externalDocs:
+            url: http://purl.org/icasa/core#smhb
+        phosphorus_determ_method:
+          description: Phosphorus determination method
+          externalDocs:
+            url: http://purl.org/icasa/core#smpx
+        potassium_determ_method:
+          description: Potassium determination method
+          externalDocs:
+            url: http://purl.org/icasa/core#smke
+        runoff_curve_no_scs:
+          description: Runoff curve no. (Soil Conservation Service)
+          externalDocs:
+            url: http://purl.org/icasa/core#slro
+        soil_albedo:
+          description: Soil albedo, dry soil
+          externalDocs:
+            url: http://purl.org/icasa/core#salb
+        soil_albedo_moist:
+          description: Soil albedo, moist soil
+          externalDocs:
+            url: http://purl.org/icasa/core#salbm
+        soil_classific_system:
+          description: Soil classification system (e.g., FAO, USDA)
+          externalDocs:
+            url: http://purl.org/icasa/core#sl_system
+        soil_classification:
+          description: Soil classification
+          externalDocs:
+            url: http://purl.org/icasa/core#classification
+        soil_denitrification_fac:
+          description: Soil denitrification factor
+          externalDocs:
+            url: http://purl.org/icasa/core#sldn
+        soil_depth:
+          description: Soil depth
+          externalDocs:
+            url: http://purl.org/icasa/core#sldp
+        soil_evaporation_limit:
+          description: Soil evaporation, upper limit for stage 1
+          externalDocs:
+            url: http://purl.org/icasa/core#slu1
+        soil_fertility_on_photo:
+          description: Soil fertility effect on photosynthesis (0 to 1 scale)
+          externalDocs:
+            url: http://purl.org/icasa/core#slpf
+        soil_file_id:
+          description: Soil profile file name
+          externalDocs:
+            url: http://purl.org/icasa/core#soil_file_id
+        soil_id:
+          description: Unique soil identifier linking to SOIL_PROFILES
+          externalDocs:
+            url: http://purl.org/icasa/core#sid
+        soil_loc_2nd_level:
+          description: Second admin level for location of site for soil profile (usually
+            state or province)
+          externalDocs:
+            url: http://purl.org/icasa/core#sl_loc_2
+        soil_loc_3rd_level:
+          description: Third admin level for location of site for soil profile (usually
+            county or municipality)
+          externalDocs:
+            url: http://purl.org/icasa/core#sl_loc_3
+        soil_location_country:
+          description: First admin for location of site for soil profile (usually
+            country)
+          externalDocs:
+            url: http://purl.org/icasa/core#sl_loc_1
+        soil_profile_id:
+          description: Soil profile identifier
+          externalDocs:
+            url: http://purl.org/icasa/core#soil_id
+        soil_profile_slope:
+          description: Slope where soil profile characterized
+          externalDocs:
+            url: http://purl.org/icasa/core#sl_slope
+        soil_site:
+          description: Name of site where soil profile data sampled
+          externalDocs:
+            url: http://purl.org/icasa/core#soil_site
+        soil_site_elevation:
+          description: Elevation of soil profile site
+          externalDocs:
+            url: http://purl.org/icasa/core#soil_elev
+        soil_surface_color:
+          description: Surface soil color, moist, using Munsell hue
+          externalDocs:
+            url: http://purl.org/icasa/core#sscol
+        soil_texture:
+          description: Soil texture
+          externalDocs:
+            url: http://purl.org/icasa/core#sltx
+        summer_u:
+          description: Summer soil evaporation, upper limit for stage 1
+          externalDocs:
+            url: http://purl.org/icasa/core#summeru
+        surface_stones_(cover):
+          description: Surface stones (cover)
+          externalDocs:
+            url: http://purl.org/icasa/core#flst
+        winter_u:
+          description: Winter soil evaporation, upper limit for stage 1
+          externalDocs:
+            url: http://purl.org/icasa/core#winteru
+    SoilProfileLayer:
+      description: Soil profile layer
+      properties:
+        caco3_content:
+          description: Soil CaCO3 content
+          externalDocs:
+            url: http://purl.org/icasa/core#caco3
+        cation_exchange_capacity:
+          description: Cation exchange capacity
+          externalDocs:
+            url: http://purl.org/icasa/core#slcec
+        electric_conductivity:
+          description: Electric conductivity
+          externalDocs:
+            url: http://purl.org/icasa/core#slec
+        iron:
+          description: Iron
+          externalDocs:
+            url: http://purl.org/icasa/core#slfe
+        layer_drainage_rate_per_day:
+          description: Drainage rate as fraction per day, per layer
+          externalDocs:
+            url: http://purl.org/icasa/core#sldrl
+        master_horizon:
+          description: Master horizon
+          externalDocs:
+            url: http://purl.org/icasa/core#slmh
+        nh4soil_kcl:
+          description: NH4 in soil based on KCl extraction, by layer
+          externalDocs:
+            url: http://purl.org/icasa/core#snh4
+        nitrate_kcl:
+          description: Nitrate in soil based on KCl extraction, by layer
+          externalDocs:
+            url: http://purl.org/icasa/core#sno3
+        phosphorus_extractable:
+          description: Phosphorus, extractable
+          externalDocs:
+            url: http://purl.org/icasa/core#slpx
+        phosphorus_iostherm_b:
+          description: Phosphorus iostherm B
+          externalDocs:
+            url: http://purl.org/icasa/core#slpb
+        phosphorus_isotherm_a:
+          description: Phosphorus isotherm A
+          externalDocs:
+            url: http://purl.org/icasa/core#slpa
+        phosphorus_organic:
+          description: Phosphorus, organic
+          externalDocs:
+            url: http://purl.org/icasa/core#slpo
+        phosphorus_total:
+          description: Phosphorus, total
+          externalDocs:
+            url: http://purl.org/icasa/core#slpt
+        plant_root_uptake_factor:
+          description: APSIM plant specific water uptake coefficient
+          externalDocs:
+            url: http://purl.org/icasa/core#apsim_kl
+        potassium_exchangeable:
+          description: Potassium, exchangeable
+          externalDocs:
+            url: http://purl.org/icasa/core#slke
+        root_growth_factor_soil:
+          description: Root growth factor, soil only (0 to 1 scale)
+          externalDocs:
+            url: http://purl.org/icasa/core#slrgf
+        sat_hydraul_conductivity:
+          description: Saturated hydraulic conductivity
+          externalDocs:
+            url: http://purl.org/icasa/core#sksat
+        soil_active_c:
+          description: Biologically active soil organic carbon by layer
+          externalDocs:
+            url: http://purl.org/icasa/core#slacc
+        soil_active_c_fraction:
+          description: Biologically active soil organic carbon by layer, fraction
+            of total organic C
+          externalDocs:
+            url: http://purl.org/icasa/core#slfac
+        soil_adsorption_coef:
+          description: Soil adsorption coefficient (0 to 1 scale)
+          externalDocs:
+            url: http://purl.org/icasa/core#sladc
+        soil_aluminum_conc:
+          description: Soil aluminum concentration in profile described
+          externalDocs:
+            url: http://purl.org/icasa/core#slal
+        soil_base_saturation:
+          description: Soil base saturation
+          externalDocs:
+            url: http://purl.org/icasa/core#slbs
+        soil_bulk_density_moist:
+          description: Soil bulk density when moist for layer
+          externalDocs:
+            url: http://purl.org/icasa/core#slbdm
+        soil_calcium_conc:
+          description: Soil calcium, exchangeable
+          externalDocs:
+            url: http://purl.org/icasa/core#slca
+        soil_clay_fraction:
+          description: Soil texture, clay (<0.002 mm), weight percent of fine earth
+          externalDocs:
+            url: http://purl.org/icasa/core#slcly
+        soil_coarse_fraction:
+          description: Soil texture, coarse fraction (>2 mm), weight percent of fine
+            earth
+          externalDocs:
+            url: http://purl.org/icasa/core#slcf
+        soil_color_moist_munsell:
+          description: Soil color of moist soil using Munsell hue
+          externalDocs:
+            url: http://purl.org/icasa/core#slcom
+        soil_compac_fact_by_lyr:
+          description: Soil compaction factor by layer (0 to 1 scale)
+          externalDocs:
+            url: http://purl.org/icasa/core#scmpf
+        soil_file_id:
+          description: Soil profile file name
+          externalDocs:
+            url: http://purl.org/icasa/core#soil_file_id
+        soil_id:
+          description: Unique soil identifier linking to SOIL_PROFILES
+          externalDocs:
+            url: http://purl.org/icasa/core#sid
+        soil_inert_c:
+          description: Inert organic carbon by layer
+          externalDocs:
+            url: http://purl.org/icasa/core#slic
+        soil_inert_c_fraction:
+          description: Inert organic carbon by layer, fraction of total organic C
+          externalDocs:
+            url: http://purl.org/icasa/core#slfic
+        soil_intermediate_c:
+          description: Intermediate soil organic carbon by layer
+          externalDocs:
+            url: http://purl.org/icasa/core#slinc
+        soil_intermediate_c_fraction:
+          description: Intermediate soil organic carbon by layer, fraction of total
+            organic C
+          externalDocs:
+            url: http://purl.org/icasa/core#slfinc
+        soil_layer_base_depth:
+          description: Soil layer base depth
+          externalDocs:
+            url: http://purl.org/icasa/core#sllb
+        soil_layer_top_depth:
+          description: Soil layer top depth
+          externalDocs:
+            url: http://purl.org/icasa/core#sllt
+        soil_magnesium_conc:
+          description: Magnesium
+          externalDocs:
+            url: http://purl.org/icasa/core#slmg
+        soil_manganese_conc:
+          description: Manganese
+          externalDocs:
+            url: http://purl.org/icasa/core#slmn
+        soil_organic_c_perc_layr:
+          description: Total soil organic carbon by layer
+          externalDocs:
+            url: http://purl.org/icasa/core#sloc
+        soil_organic_n_conc:
+          description: Nitrogen, total soil organic
+          externalDocs:
+            url: http://purl.org/icasa/core#slni
+        soil_ph_in_buffer:
+          description: pH of soil measured in buffer solution, from profile description
+          externalDocs:
+            url: http://purl.org/icasa/core#slphb
+        soil_ph_in_water:
+          description: pH of soil in water, from profile description
+          externalDocs:
+            url: http://purl.org/icasa/core#slphw
+        soil_profile_id:
+          description: Soil profile identifier
+          externalDocs:
+            url: http://purl.org/icasa/core#soil_id
+        soil_sand_fraction:
+          description: Soil texture, sand (0.05 to 2.0 mm), weight percent of fine
+            earth
+          externalDocs:
+            url: http://purl.org/icasa/core#slsnd
+        soil_silt_fraction:
+          description: Soil texture, silt (0.05 to 0.002 mm), weight percent of fine
+            earth
+          externalDocs:
+            url: http://purl.org/icasa/core#slsil
+        soil_sodium_conc:
+          description: Sodium in soil layer
+          externalDocs:
+            url: http://purl.org/icasa/core#slna
+        soil_stable_c:
+          description: Stable organic carbon by layer
+          externalDocs:
+            url: http://purl.org/icasa/core#slsc
+        soil_stable_c_fraction:
+          description: Stable organic carbon by layer, fraction of total organic C
+          externalDocs:
+            url: http://purl.org/icasa/core#slfsc
+        soil_sulphur_conc:
+          description: Sulphur in soil layer
+          externalDocs:
+            url: http://purl.org/icasa/core#slsu
+        soil_wat_drned_upper_lim:
+          description: Soil water, drained upper limit
+          externalDocs:
+            url: http://purl.org/icasa/core#sldul
+        soil_water_air_dry:
+          description: Soil water content, air dry
+          externalDocs:
+            url: http://purl.org/icasa/core#sladr
+        soil_water_field_cap_1:
+          description: Soil water content at 1/3 atmosphere pressure
+          externalDocs:
+            url: http://purl.org/icasa/core#slfc1
+        soil_water_field_cap_2:
+          description: Soil water content at 1/10 atmospheric pressure
+          externalDocs:
+            url: http://purl.org/icasa/core#slfc2
+        soil_water_lower_limit:
+          description: Soil water, lower limit
+          externalDocs:
+            url: http://purl.org/icasa/core#slll
+        soil_water_residual:
+          description: Soil water, residual
+          externalDocs:
+            url: http://purl.org/icasa/core#slres
+        soil_water_saturated:
+          description: Soil water, saturated
+          externalDocs:
+            url: http://purl.org/icasa/core#slsat
+        soil_water_uptake_factor:
+          description: Root exploration factor (0 to 1 scale, APSIM XF)
+          externalDocs:
+            url: http://purl.org/icasa/core#slxf
+        soil_water_wilting_pt:
+          description: 'Soil water content (wilting point) at 15 atmosphere pressure '
+          externalDocs:
+            url: http://purl.org/icasa/core#slwp
+        van_genuch_alpha:
+          description: Van Genuchten alpha parameter
+          externalDocs:
+            url: http://purl.org/icasa/core#vg_alpha
+        van_genuch_n:
+          description: Van Genuchten N parameter
+          externalDocs:
+            url: http://purl.org/icasa/core#vg_n
+info:
+  description: Model Definitions for INTEGRITY research project
+  title: INTEGRITY Data Models
+  version: 0.0.1
+openapi: 3.0.0
+paths: {}
