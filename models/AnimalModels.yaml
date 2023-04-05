@@ -82,6 +82,9 @@ AnimalDaily:
       unit: MJ/day
       x-ngsi:
         uri: http://opendata.inra.fr/ATOL/ATOL_0001600
+  required:
+    - dateObserved
+    - animal
 
 # Characteristics from EOL?
 # https://agroportal.lirmm.fr/ontologies/EOL?p=classes&conceptid=http%3A%2F%2Fopendata.inra.fr%2FEOL%2FEOL_0001683
