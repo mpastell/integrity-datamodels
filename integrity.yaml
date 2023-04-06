@@ -5,8 +5,15 @@ components:
       properties:
         herdid:
           description: ID of the herd
+        id:
+          description: nglsi-id id
         name:
           description: Name of the herd
+        type:
+          description: nglsi-id type, has to be Herd
+      required:
+      - id
+      - type
       x-ngsi:
         uri-prefix: https://integrity.github.io
     Animal:
@@ -35,72 +42,83 @@ components:
           type: string
           x-ngsi:
             type: Relationship
+        id:
+          description: nglsi-id id
         legalid:
           description: Official animal ID e.g. EU animal ID, has to be unique.
           type: string
         species:
           description: Animal species
           type: string
+        type:
+          description: nglsi-id type, has to be Animal
+      required:
+      - id
+      - type
       x-ngsi:
         uri-prefix: https://integrity.github.io/
     AnimalDaily:
-      allOf:
-      - description: Daily (aggregated) observations from one animal
-        properties:
-          MEintake:
-            description: Metabolizable energy intake
-            type: number
-            unit: MJ/day
-            x-ngsi:
-              uri: http://opendata.inra.fr/ATOL/ATOL_0002558
-          MErequirement:
-            description: Metabolizable energy requirement
-            type: number
-            unit: MJ/day
-            x-ngsi:
-              uri: http://opendata.inra.fr/ATOL/ATOL_0001600
-          animal:
-            description: Reference to animal
-            x-ngsi:
-              type: Relationship
-          bodyweight:
-            description: Animal's live weight
-            unit: KGM
-            x-ngsi:
-              uri: http://opendata.inra.fr/ATOL/ATOL_0000351
-          category:
-            description: 'Enum: `observed`, `predicted`'
-          dateObserved:
-            description: Date
-            type: string
-            x-ngsi:
-              model: http://schema.org/DateTime
-              type: Property
-          feedintake:
-            description: feed intake
-            unitCode: KGM
-            x-ngsi:
-              uri: http://opendata.inra.fr/ATOL/ATOL_0000772
-          feeds:
-            description: Reference to consumed feeds
-            x-ngsi:
-              type: Relationship
-          methaneyield:
-            description: Methane yield/day.
-            unit: GM
-            x-ngsi:
-              uri: http://opendata.inrae.fr/ATOL/page/ATOL_0001601
-          milkyield:
-            description: Milk yield kg/day.
-            x-ngsi:
-              uri: http://opendata.inra.fr/ATOL/ATOL_0001518
-        required:
-        - dateObserved
-        - animal
-        - category
-        x-ngsi:
-          uri-prefix: https://integrity.github.io/
       description: Daily model observations, estimates or predictions from one animal
+      properties:
+        MEintake:
+          description: Metabolizable energy intake
+          type: number
+          unit: MJ/day
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0002558
+        MErequirement:
+          description: Metabolizable energy requirement
+          type: number
+          unit: MJ/day
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0001600
+        animal:
+          description: Reference to animal
+          x-ngsi:
+            type: Relationship
+        bodyweight:
+          description: Animal's live weight
+          unit: KGM
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0000351
+        category:
+          description: 'Enum: `observed`, `predicted`'
+        dateObserved:
+          description: Date
+          type: string
+          x-ngsi:
+            model: http://schema.org/DateTime
+            type: Property
+        feedintake:
+          description: feed intake
+          unitCode: KGM
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0000772
+        feeds:
+          description: Reference to consumed feeds
+          x-ngsi:
+            type: Relationship
+        id:
+          description: nglsi-id id
+        methaneyield:
+          description: Methane yield/day.
+          unit: GM
+          x-ngsi:
+            uri: http://opendata.inrae.fr/ATOL/page/ATOL_0001601
+        milkyield:
+          description: Milk yield kg/day.
+          x-ngsi:
+            uri: http://opendata.inra.fr/ATOL/ATOL_0001518
+        type:
+          description: nglsi-id type, has to be AnimalDaily
+      required:
+      - dateObserved
+      - animal
+      - category
+      - id
+      - type
+      x-ngsi:
+        uri-prefix: https://integrity.github.io/
     Feed:
       description: Livestock feed
       properties:
@@ -109,6 +127,8 @@ components:
           items:
             type: string
           type: array
+        id:
+          description: nglsi-id id
         name:
           description: Name of the feed
         relative_composition:
@@ -116,6 +136,11 @@ components:
           items:
             type: number
           type: array
+        type:
+          description: nglsi-id type, has to be Feed
+      required:
+      - id
+      - type
       x-ngsi:
         uri: http://opendata.inra.fr/EOL/EOL_0001686
     AgriFarm:
@@ -540,8 +565,15 @@ components:
         x-model-tags: ''
         x-version: 0.0.5
       properties:
+        id:
+          description: nglsi-id id
         legalid:
           description: Legal id of the farm
+        type:
+          description: nglsi-id type, has to be AgriFarm
+      required:
+      - id
+      - type
     FieldParcel:
       description: Agricultural parcel with boundaries and official ID
       properties:
@@ -582,12 +614,19 @@ components:
           type: string
           x-ngsi:
             type: Relationship
+        id:
+          description: nglsi-id id
         name:
           description: Name of the parcel
         parcelid:
           description: Parcel id
+        type:
+          description: nglsi-id type, has to be FieldParcel
         year:
           description: Registration year
+      required:
+      - id
+      - type
       x-ngsi:
         uri-prefix: https://integrity.github.io/
     FertilizerApplication:
@@ -667,6 +706,8 @@ components:
             url: http://purl.org/icasa/core#fecd
           x-ngsi:
             uri: http://purl.org/icasa/core#fecd
+        id:
+          description: nglsi-id id
         n_in_applied_fertilizer:
           description: Nitrogen in applied fertilizer
           externalDocs:
@@ -697,6 +738,11 @@ components:
             url: http://purl.org/icasa/core#feamp
           x-ngsi:
             uri: http://purl.org/icasa/core#feamp
+        type:
+          description: nglsi-id type, has to be FertilizerApplication
+      required:
+      - id
+      - type
     HarvestEvent:
       description: Harvest event
       properties:
@@ -792,6 +838,13 @@ components:
             url: http://purl.org/icasa/core#hastg
           x-ngsi:
             uri: http://purl.org/icasa/core#hastg
+        id:
+          description: nglsi-id id
+        type:
+          description: nglsi-id type, has to be HarvestEvent
+      required:
+      - id
+      - type
     IrrigationApplication:
       description: Irrigation application
       properties:
@@ -809,6 +862,8 @@ components:
           description: Constant `ManagementActivity` used for querying all operations
         dateObserved:
           description: Date when the operation was executed
+        id:
+          description: nglsi-id id
         irrig_amount_depth:
           description: Irrigation amount, depth of water
           externalDocs:
@@ -863,6 +918,11 @@ components:
             url: http://purl.org/icasa/core#iryr
           x-ngsi:
             uri: http://purl.org/icasa/core#iryr
+        type:
+          description: nglsi-id type, has to be IrrigationApplication
+      required:
+      - id
+      - type
     OrganicMaterialApplication:
       description: Organic material application
       properties:
@@ -874,6 +934,8 @@ components:
           description: Constant `ManagementActivity` used for querying all operations
         dateObserved:
           description: Date when the operation was executed
+        id:
+          description: nglsi-id id
         org_material_appl_depth:
           description: Organic materials application depth
           externalDocs:
@@ -977,6 +1039,11 @@ components:
             url: http://purl.org/icasa/core#omppc
           x-ngsi:
             uri: http://purl.org/icasa/core#omppc
+        type:
+          description: nglsi-id type, has to be OrganicMaterialApplication
+      required:
+      - id
+      - type
     Planting:
       description: Planting date, seed and initial plant populations, seeding depth,
         and plant distribution (row spacing, etc.)
@@ -1021,6 +1088,8 @@ components:
             url: http://purl.org/icasa/core#plgpc
           x-ngsi:
             uri: http://purl.org/icasa/core#plgpc
+        id:
+          description: nglsi-id id
         length_sprout_material:
           description: Planting material sprout length
           externalDocs:
@@ -1147,6 +1216,11 @@ components:
             url: http://purl.org/icasa/core#trdate
           x-ngsi:
             uri: http://purl.org/icasa/core#trdate
+        type:
+          description: nglsi-id type, has to be Planting
+      required:
+      - id
+      - type
     TillageEvent:
       description: Tillage event
       properties:
@@ -1158,6 +1232,8 @@ components:
           description: Constant `ManagementActivity` used for querying all operations
         dateObserved:
           description: Date when the operation was executed
+        id:
+          description: nglsi-id id
         till_mix_effectiveness:
           description: Tillage operations mixing effectiveness
           externalDocs:
@@ -1212,6 +1288,11 @@ components:
             url: http://purl.org/icasa/core#tiord
           x-ngsi:
             uri: http://purl.org/icasa/core#tiord
+        type:
+          description: nglsi-id type, has to be TillageEvent
+      required:
+      - id
+      - type
     Genotype:
       description: Crop and cultivar identifiers, names, and background
       properties:
@@ -1257,6 +1338,10 @@ components:
             url: http://purl.org/icasa/core#rm
           x-ngsi:
             uri: http://purl.org/icasa/core#rm
+        type:
+          description: nglsi-id type, has to be Genotype
+      required:
+      - type
     Soil:
       description: Set of soil profile data for pedons from one or more sites in a
         region
@@ -1273,6 +1358,8 @@ components:
             url: http://purl.org/icasa/core#version_sl
           x-ngsi:
             uri: http://purl.org/icasa/core#version_sl
+        id:
+          description: nglsi-id id
         revision_date_first_sl:
           description: Date the file was first created
           externalDocs:
@@ -1315,6 +1402,11 @@ components:
             url: http://purl.org/icasa/core#methods
           x-ngsi:
             uri: http://purl.org/icasa/core#methods
+        type:
+          description: nglsi-id type, has to be Soil
+      required:
+      - id
+      - type
     SoilProfile:
       description: Background information on a single profileSoil profile data for
         individual pedons
@@ -1349,6 +1441,8 @@ components:
             url: http://purl.org/icasa/core#sldr
           x-ngsi:
             uri: http://purl.org/icasa/core#sldr
+        id:
+          description: nglsi-id id
         latitude_soil_profile:
           description: Latitude of soil profile site
           externalDocs:
@@ -1526,12 +1620,17 @@ components:
             url: http://purl.org/icasa/core#flst
           x-ngsi:
             uri: http://purl.org/icasa/core#flst
+        type:
+          description: nglsi-id type, has to be SoilProfile
         winter_u:
           description: Winter soil evaporation, upper limit for stage 1
           externalDocs:
             url: http://purl.org/icasa/core#winteru
           x-ngsi:
             uri: http://purl.org/icasa/core#winteru
+      required:
+      - id
+      - type
     SoilProfileLayer:
       description: Soil profile layer
       properties:
@@ -1553,6 +1652,8 @@ components:
             url: http://purl.org/icasa/core#slec
           x-ngsi:
             uri: http://purl.org/icasa/core#slec
+        id:
+          description: nglsi-id id
         iron:
           description: Iron
           externalDocs:
@@ -1888,6 +1989,8 @@ components:
             url: http://purl.org/icasa/core#slwp
           x-ngsi:
             uri: http://purl.org/icasa/core#slwp
+        type:
+          description: nglsi-id type, has to be SoilProfileLayer
         van_genuch_alpha:
           description: Van Genuchten alpha parameter
           externalDocs:
@@ -1900,6 +2003,9 @@ components:
             url: http://purl.org/icasa/core#vg_n
           x-ngsi:
             uri: http://purl.org/icasa/core#vg_n
+      required:
+      - id
+      - type
 info:
   description: Model Definitions for INTEGRITY research project
   title: INTEGRITY Data Models

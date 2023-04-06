@@ -12,9 +12,7 @@ components:
     Animal:
       $ref: ./templates/animals.yaml#/Animal
     AnimalDaily:
-      description: "Daily model observations, estimates or predictions from one animal"
-      allOf:
-        - $ref: ./templates/animals.yaml#/AnimalDaily
+      $ref: ./templates/animals.yaml#/AnimalDaily
     Feed:
       $ref: ./templates/animals.yaml#/Feed
 

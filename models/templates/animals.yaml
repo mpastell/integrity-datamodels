@@ -34,8 +34,7 @@ Animal:
 AnimalDaily:
   x-ngsi:
     uri-prefix: https://integrity.github.io/
-  description:
-    "Daily (aggregated) observations from one animal"
+  description: Daily model observations, estimates or predictions from one animal
   properties:
     dateObserved:
       description: Date

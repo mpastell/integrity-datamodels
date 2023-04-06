@@ -22,6 +22,22 @@ if __name__ == "__main__":
     models = OrderedDict()
     for yaml_file in files:
         m = read_schemas(yaml_file)
+        for mdl in m.keys():
+            # Add id and type fields if missing
+            if "id" not in m[mdl]["properties"] :
+                m[mdl]["properties"]["id"] = {"description" : "nglsi-id id"}
+                if "required" in m[mdl]:
+                    m[mdl]["required"].append("id")
+                else:
+                    m[mdl]["required"] = ["id"]
+            if "type" not in m[mdl]["properties"]:
+                m[mdl]["properties"]["type"] = {"description" : f"nglsi-id type, has to be {mdl}"}
+                if "required" in m[mdl]:
+                    m[mdl]["required"].append("type")
+                else:
+                    m[mdl]["required"] = ["type"]
+
+
         models.update(m)
 
     doc = OrderedDict()
