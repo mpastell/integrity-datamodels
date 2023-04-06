@@ -7,6 +7,10 @@ The models are work in progress and are not yet meant to be usable outside of th
 
 ## Some information
 
+### Field and farm basic information
+
+Models in `models/Fields.yaml` have been defined manually.
+
 ### Crop management and soil
 
 Models in `models/ICASAModels.yaml` are converted from AgMIP ICASA Terraref ontology: https://terraref.github.io/icasa/1.0-alpha/core/. Some NGSI-LD specific fields are added in the conversion, see: `scripts/icasa2yaml.py`.
@@ -15,3 +19,12 @@ Models in `models/ICASAModels.yaml` are converted from AgMIP ICASA Terraref onto
 
 Models in `models/AnimalModels.yaml` have been defined manually, ATOL and EHOL ontologies have been used to the terms where possible.
 
+### Combine all models to one schema
+
+Combine, generate NGSI-LD context and pydantic models.
+
+```bash
+python3 scripts/merge_yaml_schemas.py models/*.yaml
+datamodelgen ngsi -i integrity.yaml > integrity-ngsi.jsonld
+datamodel-codegen --input integrity.yaml --output notebooks/integritymodels.py
+```

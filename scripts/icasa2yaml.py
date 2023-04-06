@@ -31,6 +31,7 @@ def owl_class_to_yaml(class_iri, graph):
             prop = {"description" : str(comments[0])}
             prop_name = labels[-1]
             prop["externalDocs"] = {"url" : str(property_iri)}
+            prop["x-ngsi"] = {"uri" : str(property_iri)}
             properties[prop_name] = prop
     comments = [comment for comment in graph.objects(URIRef(class_iri), RDFS.comment)]
 
@@ -67,6 +68,7 @@ def management_class_to_yaml(class_iri, graph):
             prop = {"description" : str(comments[0])}
             prop_name = labels[-1]
             prop["externalDocs"] = {"url" : str(property_iri)}
+            prop["x-ngsi"] = {"uri" : str(property_iri)}
             properties[prop_name] = prop
     comments = [comment for comment in graph.objects(URIRef(class_iri), RDFS.comment)]
     del properties["id"]

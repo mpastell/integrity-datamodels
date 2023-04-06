@@ -1,0 +1,75 @@
+---
+components:
+  schemas:
+    AgriFarm:
+      properties:
+        legalid:
+          description: Legal id of the farm
+      allOf:
+        - $ref: https://smart-data-models.github.io/dataModel.Agrifood/AgriFarm/model.yaml#/AgriFarm
+    FieldParcel:
+      x-ngsi:
+        uri-prefix: https://integrity.github.io/
+      description: "Agricultural parcel with boundaries and official ID"
+      properties:
+        parcelid:
+          description: Parcel id
+        name:
+          description: Name of the parcel
+        category:
+          description: Parcel type. 'Enum:' `base`, `growth`, `h3`
+        year:
+          description: Registration year
+        area:
+          description: The area of the parcel nominally in square meters.
+          minimum: 0
+          type: number
+          x-ngsi:
+            model: http://schema.org/Number
+            type: Property
+            units: m2
+        farm:
+          description: Reference to farm.
+          type: string
+          x-ngsi:
+            type: Relationship
+
+        boundary:
+          description: GeoProperty. Geojson reference to the item. Polygon
+          properties:
+            coordinates:
+              items:
+                items:
+                  items:
+                    type: number
+                  minItems: 2
+                  type: array
+                minItems: 4
+                type: array
+              type: array
+            type:
+              enum:
+                - Polygon
+              type: string
+          required:
+            - type
+            - coordinates
+          title: GeoJSON Polygon
+          type: object
+
+info:
+  description: Model Definitions for INTEGRITY research project
+  title: INTEGRITY parcel models schema
+  version: 0.0.1
+openapi: 3.0.0
+paths: {}
+
+
+
+
+
+
+
+
+
+

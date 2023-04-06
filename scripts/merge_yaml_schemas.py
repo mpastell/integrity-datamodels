@@ -17,10 +17,7 @@ def read_schemas(yaml_file):
     r.resolve_references()
     return r.specs["components"]["schemas"]
 
-#yaml_file = "../animal.yaml"
-#yaml_file = "../models/ICASAModels.yaml"
 if __name__ == "__main__":
-    print(sys.argv)
     files = sys.argv[1:]
     models = OrderedDict()
     for yaml_file in files:
@@ -34,10 +31,10 @@ if __name__ == "__main__":
                 "version": "0.0.1"}
     doc["openapi"] = "3.0.0"
     doc["paths"] = {}
-    with open("allmodels.yaml", "w") as yaml_file:
+    with open("integrity.yaml", "w") as yaml_file:
         yaml_file.write("---\n")
         yaml.dump(doc, yaml_file, default_flow_style=False)
-
+    print("Combined schema written to integrity.yaml")
     #list(models.keys())
 
 

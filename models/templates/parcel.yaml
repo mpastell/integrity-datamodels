@@ -1,0 +1,18 @@
+Parcel:
+  description: "Agricultural parcel with boundaries and official ID"
+  properties:
+    id:
+      description: Parcel id in land parcel registy
+    name:
+      description: Name of the parcel
+    year:
+      description: Registration year
+    area:
+      description: The area of the parcel nominally in square meters.
+      minimum: 0
+      type: number
+      x-ngsi:
+        model: http://schema.org/Number
+        type: Property
+        units: m2
+    

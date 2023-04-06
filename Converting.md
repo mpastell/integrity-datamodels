@@ -29,7 +29,7 @@ kubectl cp context-ngsi.jsonld $NGPOD:/app
 
 Pydantic models can be generated from the definition:
 
-````
+```
 pip install datamodel-code-generator
 datamodel-codegen --input integrity.yaml --output models.py
 ```
