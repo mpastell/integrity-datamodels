@@ -400,8 +400,12 @@ components:
           description: Constant `ManagementActivity` used for querying all operations
         dateObserved:
           description: Date when the operation was executed
-        genotype:
-          description: Reference to genotype http://purl.org/icasa/core#Genotype
+        crop_common_name:
+          description: ICASA crop common name
+        crop_code:
+          description: ICASA crop code
+        cul_name:
+          description: ICASA cultivar name
         planting_material:
           description: Planting material
           externalDocs:

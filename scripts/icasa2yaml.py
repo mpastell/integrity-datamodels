@@ -58,7 +58,12 @@ def management_class_to_yaml(class_iri, graph):
     properties["dateObserved"] = {"description" : "Date when the operation was executed"}
 
     if class_name == "Planting":
-        properties["genotype"] = {"description" : "Reference to genotype http://purl.org/icasa/core#Genotype"}
+        #properties["genotype"] = {"description" : "Reference to genotype http://purl.org/icasa/core#Genotype"}
+        # Use crop and cultivar name directly instead of genotype ref
+        # TODO add ngsi links
+        properties["crop_common_name"] = {"description" : "ICASA crop common name"}
+        properties["crop_code"] = {"description" : "ICASA crop code"}
+        properties["cul_name"] = {"description" : "ICASA cultivar name"}
 
     # Iterate over properties that have the specific class in their domain
     for property_iri, domain_iri in graph.subject_objects(predicate=RDFS.domain):

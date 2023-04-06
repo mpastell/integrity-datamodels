@@ -1054,6 +1054,12 @@ components:
             type: Relationship
         category:
           description: Constant `ManagementActivity` used for querying all operations
+        crop_code:
+          description: ICASA crop code
+        crop_common_name:
+          description: ICASA crop common name
+        cul_name:
+          description: ICASA cultivar name
         dateObserved:
           description: Date when the operation was executed
         emergence_date:
@@ -1080,8 +1086,6 @@ components:
             url: http://purl.org/icasa/core#plftn
           x-ngsi:
             uri: http://purl.org/icasa/core#plftn
-        genotype:
-          description: Reference to genotype http://purl.org/icasa/core#Genotype
         germination:
           description: Planting material germination
           externalDocs:
